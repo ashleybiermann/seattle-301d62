@@ -106,44 +106,42 @@ console.log('Hello from the new object function', newObject(['hi', 'hello', 'are
 // Refactor each function into an arrow function.
 // Write your solutions on a single line wherever possible.
 
-
-
-let sum = function(a, b, c, d) {
+let sum = ((a, b, c, d) => {
   return a + b + c + d;
-};
+});
 
-// TODO: Uncomment the following line of code to see the output in the browser console
-// console.log(sum(1, 2, 3, 4));
+// DONE: Uncomment the following line of code to see the output in the browser console
+console.log(sum(1, 2, 3, 4));
 
 
-let objectLit = function() {
+let objectLit = (() => {
   return {
     key1: 'value1',
     key2: 'value2',
     key3: 'value3',
   };
-};
+});
 
-// TODO: Uncomment the following line of code to see the output in the browser console
-// console.log(objectLit());
+// DONE: Uncomment the following line of code to see the output in the browser console
+console.log(objectLit());
 
 
-let sumAndProduct = function(a, b) {
+let sumAndProduct = ((a, b) => {
   let sum = a + b;
   let product = a * b;
   return [sum, product];
-};
+});
 
-// TODO: Uncomment the following line of code to see the output in the browser console
-// console.log(sumAndProduct(3, 9));
+// DONE: Uncomment the following line of code to see the output in the browser console
+console.log(sumAndProduct(3, 9));
 
 
-let message = function(name) {
+let message = ((name) => {
   return `Hello, ${name}!`;
-};
+});
 
-// TODO: Uncomment the following line of code to see the output in the browser console
-// console.log(message('Allie'));
+// DONE: Uncomment the following line of code to see the output in the browser console
+console.log(message('Allie'));
 
 
 let Student = function(name, age, hometown) {
@@ -154,11 +152,11 @@ let Student = function(name, age, hometown) {
 
 let joe = new Student('Joe', 'Schmoe', 100);
 
-// TODO: Uncomment the following line of code to see the output in the browser console
-// Note that the arrow function will cause this code to break!
-// console.log(joe);
+// DONE: Uncomment the following line of code to see the output in the browser console
+// Note that the arrow function will cause this code to break! ... sure does!
+console.log(joe);
 
-// TODO: After viewing the previous console.log(), return the code to a working state.
+// DONE: After viewing the previous console.log(), return the code to a working state.
 
 
 // if we need to referece the `Student` with `this` we can't use the arrow function
@@ -166,13 +164,11 @@ Student.prototype.greeting = function() {
   return `Hi, my name is ${this.name}`;
 };
 
-// TODO: Uncomment the following line of code to see the output in the browser console
+// DONE: Uncomment the following line of code to see the output in the browser console
 // Note that the arrow function will cause this method to break!
 console.log(joe.greeting());
 
-// TODO: After viewing the previous console.log(), return the code to a working state.
-
-
+// DONE: After viewing the previous console.log(), return the code to a working state.
 
 Student.courseName = () => {
   return 'This student is enrolled in Code 301.';
@@ -182,19 +178,18 @@ Student.courseName = () => {
 console.log(Student.courseName());
 
 
-
 // STEP 11
 // How do arrow functions affect constructor functions?
 Student.prototype.scope = function() {
   console.log('scope this', this);
 };
 
-// TODO: Uncomment the following line of code to see the output in the browser console
+// DONE: Uncomment the following line of code to see the output in the browser console
 console.log(joe.scope());
 
 Student.prototype.scopeArrow = () => console.log('scopearrow', this);
 
-// TODO: Uncomment the following line of code to see the output in the browser console
+// DONE: Uncomment the following line of code to see the output in the browser console
 console.log(joe.scopeArrow());
 
 // TODO: Write a COMMENT below to answer the following questions.
@@ -203,4 +198,5 @@ console.log(joe.scopeArrow());
 // 2. What is "this" when joe.scopeArrow() is invoked?
 // the Window object
 // 3. Explain why "this" is different when an arrow function is used.
-// this went one up in the scope, pointed at the `this` outside of joe.scopeArrow which is the Window, joe.scope pointed at joe
+// `this` went one up in the arrow scope, pointed at the `this` outside of joe.scopeArrow which is the Window, joe.scope pointed at joe
+// `this` with no arrow gives Student, `this` with arrow function gives ones up which is Window
